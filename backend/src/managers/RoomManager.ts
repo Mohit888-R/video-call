@@ -34,8 +34,9 @@ export class RoomManager{
 
     onAnswer(roomId:string, sdp:string){
         const user1 = this.rooms.get(roomId)?.user1; 
-        user1?.socket.emit('offer',{
-            sdp
+        user1?.socket.emit('return-ansewr',{
+            sdp,
+            roomId
         })
     }
 

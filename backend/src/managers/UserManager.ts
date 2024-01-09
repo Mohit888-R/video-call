@@ -33,14 +33,15 @@ export class userManager{
         if(this.queue.length < 2){
             return ;
         }
-        const user1 = this.users.find((id)=>id.socket.id === this.queue.pop());
+        const user1 = this.users.find((id)=>id.socket.id !== this.queue.pop());
         const user2 = this.users.find((id)=>id.socket.id === this.queue.pop());
 
         if(!user1 || !user2){
             return;
         }
 
-        const room = this.roomManager.createRoom(user1,user1);
+        const room = this.roomManager.createRoom(user1,user2);
+        this.clearQueue();
       
     }
 

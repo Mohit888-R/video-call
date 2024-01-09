@@ -1,7 +1,16 @@
+import Link from "next/link";
+import { useState } from "react";
+
 const Landing = ()=> {
+  const [name, setName] = useState<string>();
   return (
+
     <div>
-      This is Landing page
+      <input type="text" onChange={(e) => {
+            setName(e.target.value);
+        }}>
+        </input>
+        <Link href={`/room/?name=${name}`}>Join</Link>
     </div>
   )
 }

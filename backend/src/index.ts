@@ -1,17 +1,19 @@
-import { Socket } from 'socket.io';
-import http = require("http")
-const {Server} = require("socket.io");
-const express = require('express');
-
+import { Socket,Server } from 'socket.io';
+import http from "http";
+import express from 'express';
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
-
+const io = new Server(server,{
+    cors: {
+        origin: "*"
+      }
+});
+ 
 
 io.on('connection', (socket:Socket) => {
   console.log('a user connected');
 });
 
-server.listen(5000, () => {
-  console.log('server running at http://localhost:5000');
+server.listen(5001, () => {
+  console.log('server running at http://localhost:5001');
 });
